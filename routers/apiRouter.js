@@ -2,54 +2,54 @@ const express = require('express')
 const router = express.Router()
 const userModel = require("../models/userModel")
 
-// const data = require("../data")
+const data = require("../data")
 
-// router.get("/",(req,res)=>{
-//     res.json(data)
-// })
+router.get("/",(req,res)=>{
+    res.json(data)
+})
 
-// router.post("/create",async (req, res)=>{
-//     try {
-//         const user = await userModel.create({
-//             name: req.body.name,
-//             username: req.body.username
+router.post("/create",async (req, res)=>{
+    try {
+        const user = await userModel.create({
+            name: req.body.name,
+            username: req.body.username
     
-//         });
-//         res.json({ success: true, message: "user create successfully`"  })
-//     } catch (error) {
-//         res.json({  success: false, messsage: error.message })
-//     }
-// });
+        });
+        res.json({ success: true, message: "user create successfully`"  })
+    } catch (error) {
+        res.json({  success: false, messsage: error.message })
+    }
+});
 
 
-// const users = [
-//     {_id: "1", name: "dev"},
-//     {_id: "2", name: "devanshu"},
-// ]
+const users = [
+    {_id: "1", name: "dev"},
+    {_id: "2", name: "devanshu"},
+]
 
-// showing all user in users array
-// router.get("/user", (req, res) =>{
-//     res.json(users)
-// })
-
-
-// find a user in users array
-// router.get("/user/:id", (req,res)=>{
-//     const found = users.find(elem => elem._id === req.params.id);
-//     if(!found) return res.json({success: false, message: "usernot found"})
-
-//         res.json(found);
-// })
+showing all user in users array
+router.get("/user", (req, res) =>{
+    res.json(users)
+})
 
 
+find a user in users array
+router.get("/user/:id", (req,res)=>{
+    const found = users.find(elem => elem._id === req.params.id);
+    if(!found) return res.json({success: false, message: "usernot found"})
 
-// create a user in users array
-// router.post("/user/create",(req,res) => {
-//     const index = Math.floor(Math.random() * 10)
-//     users.push({_id: index, name: req.body.name})
+        res.json(found);
+})
 
-//     res.json(users)
-// })
+
+
+create a user in users array
+router.post("/user/create",(req,res) => {
+    const index = Math.floor(Math.random() * 10)
+    users.push({_id: index, name: req.body.name})
+
+    res.json(users)
+})
 
 ////---------------------------------------------------------------------------------------------------------------------
 
